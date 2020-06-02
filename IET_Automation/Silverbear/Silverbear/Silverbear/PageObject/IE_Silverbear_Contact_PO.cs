@@ -15,6 +15,7 @@ using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 
+
 namespace Silverbear.PageObject
 {
     public class IE_Silverbear_Contact_PO
@@ -83,6 +84,7 @@ namespace Silverbear.PageObject
 
 
         IJavaScriptExecutor executor;
+        Config cf = new Config();
 
         #endregion
 
@@ -133,8 +135,10 @@ namespace Silverbear.PageObject
         By PAEmail = By.CssSelector("input#sb_paemail_i");
         By PrefEmailOuter = By.CssSelector("div#sb_preferredemail");
         By PrefEmail = By.CssSelector("div#sb_preferredemail>div:nth-child(2)>select#sb_preferredemail_i");
-        By BtnListContact = By.CssSelector("input.PSPUSHBUTTON");
+        By BtnListContact = By.CssSelector("div#crmTopBar>div#crmRibbonManager>div>ul>li");
+        //By BtnListContact = By.CssSelector("input.PSPUSHBUTTON");
         By SalutationWarn = By.CssSelector("span.PSTEXT");
+        By ietDetails = By.LinkText("IET Details");
 
 
 
@@ -193,13 +197,13 @@ namespace Silverbear.PageObject
 
                 driver.SwitchTo().DefaultContent();
 
-                iWait.Until(ExpectedConditions.ElementExists(By.CssSelector("div.navFloatRight>span#TabUserInfoId>a>span#navTabButtonChangeProfileImageLink>img")));
+                iWait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(By.CssSelector("div.navFloatRight>span#TabUserInfoId>a>span#navTabButtonChangeProfileImageLink>img")));
 
                 IWebElement ele_profImage = driver.FindElement(By.CssSelector("div.navFloatRight>span#TabUserInfoId>a>span#navTabButtonChangeProfileImageLink>img"));
 
                 ele_profImage.Click();
 
-                iWait.Until(ExpectedConditions.ElementExists(By.CssSelector("div.navUserInfoDropDownMenuContainer>span#navTabButtonUserInfoDropDownId>a#navTabButtonUserInfoUserNameId")));
+                iWait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(By.CssSelector("div.navUserInfoDropDownMenuContainer>span#navTabButtonUserInfoDropDownId>a#navTabButtonUserInfoUserNameId")));
 
                 ele_CRMUser = driver.FindElement(By.CssSelector("div.navUserInfoDropDownMenuContainer>span#navTabButtonUserInfoDropDownId>a#navTabButtonUserInfoUserNameId"));
 
@@ -213,7 +217,7 @@ namespace Silverbear.PageObject
 
                 // Wait until 'Marketing Dropdown' is displayed on SilverBear CRM home page
 
-                iWait.Until(ExpectedConditions.ElementExists(MktDropDownContact));
+                iWait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(MktDropDownContact));
 
                 // Wait until content is loading on SilverBear CRM
 
@@ -291,7 +295,7 @@ namespace Silverbear.PageObject
 
                 Helper.AlertHandling(driver, "alert", null, null);
 
-                //iWait.Until(ExpectedConditions.InvisibilityOfElementLocated(Loading));
+                //iWait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.InvisibilityOfElementLocated(Loading));
 
                 Thread.Sleep(10000);
 
@@ -324,9 +328,9 @@ namespace Silverbear.PageObject
                 waitUpdate.IgnoreExceptionTypes(typeof(StaleElementReferenceException));
                 waitUpdate.IgnoreExceptionTypes(typeof(InvalidElementStateException));
 
-                waitUpdate.Until(ExpectedConditions.ElementExists(NewContact));
+                waitUpdate.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(NewContact));
 
-                waitUpdate.Until(ExpectedConditions.VisibilityOfAllElementsLocatedBy(NewContact));
+                waitUpdate.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.VisibilityOfAllElementsLocatedBy(NewContact));
 
                 // Update Operation
 
@@ -350,7 +354,7 @@ namespace Silverbear.PageObject
 
                 // Wait until search table is loaded in search grid
 
-                iWait.Until(ExpectedConditions.ElementExists(SearchGrid));
+                iWait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(SearchGrid));
 
                 ele_SearchTable = driver.FindElement(SearchGrid);
 
@@ -381,9 +385,9 @@ namespace Silverbear.PageObject
 
                     Helper.AlertHandling(driver, "alert", null, null);
 
-                    iWait.Until(ExpectedConditions.InvisibilityOfElementLocated(Loading));
+                    iWait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.InvisibilityOfElementLocated(Loading));
 
-                    iWait.Until(ExpectedConditions.ElementIsVisible(NewContactHeader));
+                    iWait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(NewContactHeader));
 
                 }
             }
@@ -413,9 +417,9 @@ namespace Silverbear.PageObject
                 waitRetention.IgnoreExceptionTypes(typeof(StaleElementReferenceException));
                 waitRetention.IgnoreExceptionTypes(typeof(InvalidElementStateException));
 
-                waitRetention.Until(ExpectedConditions.ElementExists(NewContact));
+                waitRetention.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(NewContact));
 
-                waitRetention.Until(ExpectedConditions.VisibilityOfAllElementsLocatedBy(NewContact));
+                waitRetention.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.VisibilityOfAllElementsLocatedBy(NewContact));
 
                 driver.SwitchTo().Frame(driver.FindElement(contentIFrame0));
 
@@ -429,7 +433,7 @@ namespace Silverbear.PageObject
 
                 // Wait until search table is loaded in search grid
 
-                iWait.Until(ExpectedConditions.ElementExists(SearchGrid));
+                iWait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(SearchGrid));
 
                 ele_SearchTable = driver.FindElement(SearchGrid);
 
@@ -505,7 +509,7 @@ namespace Silverbear.PageObject
 
             driver.SwitchTo().DefaultContent();
 
-            iWait.Until(ExpectedConditions.ElementExists(SalesDropDown));
+            iWait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(SalesDropDown));
 
             IWebElement ele_salesDropDown = driver.FindElement(SalesDropDown);
 
@@ -525,7 +529,7 @@ namespace Silverbear.PageObject
 
             // Wait until content is loading on SilverBear CRM
 
-            iWait.Until(ExpectedConditions.InvisibilityOfElementLocated(Loading));
+            //iWait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.InvisibilityOfElementLocated(Loading));
 
             DefaultWait<IWebDriver> waitUpdate = new DefaultWait<IWebDriver>(driver);
 
@@ -535,7 +539,9 @@ namespace Silverbear.PageObject
             waitUpdate.IgnoreExceptionTypes(typeof(StaleElementReferenceException));
             waitUpdate.IgnoreExceptionTypes(typeof(InvalidElementStateException));
 
-            waitUpdate.Until(ExpectedConditions.ElementExists(NewContact));
+            Thread.Sleep(2000);
+
+            waitUpdate.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(NewContact));
 
             // // waitUpdate.Until(ExpectedConditions.VisibilityOfAllElementsLocatedBy(By.CssSelector(OR.readingXMLFile("Contact", "NewContact", "SilverBearCRM_OR.xml"))));
 
@@ -543,7 +549,9 @@ namespace Silverbear.PageObject
 
             driver.SwitchTo().Frame(driver.FindElement(contentIFrame0));
 
-            IList<string> contactDetails = objConfig.readSysConfigFile("SilverBearCRM", "Contact", "SysConfig.xml");
+            Thread.Sleep(2000);
+
+            IList<string> contactDetails = cf.readSysConfigFile("SilverBearCRM", "Contact", "SysConfig.xml");
 
             string contRefName = contactDetails.ElementAt(48).ToString();
 
@@ -567,7 +575,7 @@ namespace Silverbear.PageObject
 
                 // Wait until search table is loaded in search grid
 
-                iWait.Until(ExpectedConditions.ElementExists(SearchGrid));
+                iWait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(SearchGrid));
 
                 ele_SearchTable = driver.FindElement(SearchGrid);
 
@@ -593,11 +601,11 @@ namespace Silverbear.PageObject
 
                 ele_firstRecord.FindElement(By.CssSelector("td:nth-child(2)")).Click();
 
-                Thread.Sleep(5000);
+                Thread.Sleep(7000);
 
-                iWait.Until(ExpectedConditions.InvisibilityOfElementLocated(Loading));
+                //iWait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.InvisibilityOfElementLocated(Loading));
 
-                iWait.Until(ExpectedConditions.ElementIsVisible(NewContactHeader));
+                iWait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(NewContactHeader));
 
                 driver.SwitchTo().DefaultContent();
 
@@ -1076,7 +1084,13 @@ namespace Silverbear.PageObject
         {
             try
             {
+                driver.SwitchTo().DefaultContent();
+                
                 IList<IWebElement> btnList = driver.FindElements(BtnListContact);
+
+                Console.WriteLine("Total header elements:=" + btnList.Count);
+
+                Console.WriteLine("First Element:" + btnList.ElementAt(0).GetAttribute("title").ToString());
 
                 Thread.Sleep(2000);
 
@@ -1093,8 +1107,6 @@ namespace Silverbear.PageObject
 
                 Thread.Sleep(2000);
 
-
-
                 // IList<IWebElement> btnList = driver.FindElements(By.CssSelector("ul.ms-crm-CommandBar-Menu > li"));
 
                 Thread.Sleep(2000);
@@ -1105,23 +1117,30 @@ namespace Silverbear.PageObject
 
                 if (operation.Equals("New"))
                 {
-                    Thread.Sleep(5000);
+                    newContactURL = driver.Url.ToString();
 
-                    ele_ietDetailstab = driver.FindElement(By.LinkText("IET Details"));
+                    Console.WriteLine("New Contact URL on Save" + newContactURL);
+                    //Thread.Sleep(5000);
 
-                    ele_ietDetailstab.Click();
+                    //Helper.ScrollToViewElement(driver.FindElement(ietDetails), driver);
 
-                    Thread.Sleep(2000);
+                    //Thread.Sleep(2000);
 
-                    DarwinKey = driver.FindElement(By.CssSelector("table.PSLEVEL1SCROLLAREABODY>tbody>tr:nth-child(7)>td:nth-child(2)>span")).Text;
+                    //ele_ietDetailstab = driver.FindElement(By.LinkText("IET Details"));
 
-                    Thread.Sleep(1000);
+                    //ele_ietDetailstab.Click();
 
-                    IWebElement ele_PersonTab = driver.FindElement(By.LinkText("Person"));
+                    //Thread.Sleep(2000);
 
-                    ele_PersonTab.Click();
+                    //DarwinKey = driver.FindElement(By.CssSelector("table.PSLEVEL1SCROLLAREABODY>tbody>tr:nth-child(7)>td:nth-child(2)>span")).Text;
 
-                    Thread.Sleep(1000);
+                    //Thread.Sleep(1000);
+
+                    //IWebElement ele_PersonTab = driver.FindElement(By.LinkText("Person"));
+
+                    //ele_PersonTab.Click();
+
+                    //Thread.Sleep(1000);
 
                 }
 

@@ -57,3 +57,4 @@ D:\IET_Automation\Silverbear\Silverbear\Silverbear\bin\Debug\Newtonsoft.Json.dll
 D:\IET_Automation\Silverbear\Silverbear\Silverbear\bin\Debug\Microsoft.SqlServer.Management.SqlParser.pdb
 D:\IET_Automation\Silverbear\Silverbear\Silverbear\bin\Debug\Microsoft.SqlServer.Management.SqlParser.xml
 D:\IET_Automation\Silverbear\Silverbear\Silverbear\bin\Debug\Newtonsoft.Json.xml
+D:\IET_Automation\Silverbear\Silverbear\Silverbear\bin\Debug\SeleniumExtras.WaitHelpers.dll
